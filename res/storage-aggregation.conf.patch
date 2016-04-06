@@ -1,0 +1,36 @@
+--- /opt/graphite/conf/storage-aggregation.conf.example	2015-11-27 19:02:00.000000000 +0000
++++ /opt/graphite/conf/storage-aggregation.conf	2016-04-05 22:41:09.098936553 +0000
+@@ -21,11 +21,31 @@
+ xFilesFactor = 0.1
+ aggregationMethod = max
+ 
+-[sum]
++[count]
+ pattern = \.count$
+ xFilesFactor = 0
+ aggregationMethod = sum
+ 
++[lower]
++pattern = \.lower(_\d+)?$
++xFilesFactor = 0.1
++aggregationMethod = min
++
++[upper]
++pattern = \.upper(_\d+)?$
++xFilesFactor = 0.1
++aggregationMethod = max
++
++[sum]
++pattern = \.sum$
++xFilesFactor = 0
++aggregationMethod = sum
++
++[gauges]
++pattern = ^.*\.gauges\..*
++xFilesFactor = 0
++aggregationMethod = last
++
+ [default_average]
+ pattern = .*
+ xFilesFactor = 0.5
+
